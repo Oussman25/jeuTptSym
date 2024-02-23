@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center flex-wrap vh-100">
+        <div class="w-100 text-center">
+            <h1>Joueur 1</h1>
+            <p>Selectionne ton personnage</p>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 d-flex justify-content-center mb-5">
+                <div class="card w-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mage</h5>
+                        <p class="card-text">Point de Vie : 100</p>
+                        <p class="card-text">Defence : Trés Mauvaise</p>
+                        <p class="card-text">Attaque : Trés Bonne</p>
+                        <p class="card-text">Attaque Spé : Boule de Feu</p>
+                        <a href="{{ path('select_character1', { 'name': 'mage' }) }}" class="btn btn-primary">Select</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 d-flex justify-content-center mb-5">
+                <div class="card w-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Guerrier</h5>
+                        <p class="card-text">Point de Vie : 120</p>
+                        <p class="card-text">Defence : Bonne</p>
+                        <p class="card-text">Attaque : Bonne</p>
+                        <p class="card-text">Attaque Spé : Rage</p>  
+                        <a href="{{ path('select_character1', { 'name': 'guerrier' }) }}" class="btn btn-primary">Select</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 d-flex justify-content-center mb-5">
+                <div class="card w-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Archer</h5>
+                        <p class="card-text">Point de Vie : 90</p>
+                        <p class="card-text">Defence : Mauvaise</p>
+                        <p class="card-text">Attaque : Bonne +</p>
+                        <p class="card-text">Attaque Spé : Raffale</p>
+                        <a href="{{ path('select_character1', { 'name': 'archer' }) }}" class="btn btn-primary">Select</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 d-flex justify-content-center mb-5">
+                <div class="card w-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Pretre</h5>
+                        <p class="card-text">Point de Vie : 80</p>
+                        <p class="card-text">Defence : Trés Bonne</p>
+                        <p class="card-text">Attaque : Mauvaise</p>
+                        <p class="card-text">Attaque Spé : Soin</p>
+                        <a href="{{ path('select_character1', { 'name': 'pretre' }) }}" class="btn btn-primary">Select</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

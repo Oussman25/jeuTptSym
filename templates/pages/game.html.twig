@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% if player1pv > 0 and player2pv > 0 %}
+<div class="d-flex vh-100 vw-100">
+    <div class="card w-50 text-center">
+        <div class="card-header">
+            {{ player1name }}
+        </div>
+        <div class="card-body">
+            <div class="progress">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: {{pourcentage_pv_j1}}%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <p class="card-text">PV: {{ player1pv }}</p>
+            {% if tour == 1 %}
+            <a href="{{ path('attaquer', {'Player': 'player1'}) }}" class="btn btn-primary">Attaque Joueur 1</a>
+            {% else %}
+            <button type="button" class="btn btn-primary disabled">Attaque Joueur 1</button>
+            {% endif %}
+            {# <a href="{{ path('attaque_speciale', {'attaque': joueur1.getAtt()}) }}" class="btn btn-danger">Attaque Spéciale</a> #}
+        </div>
+    </div>
+
+    <div class="card w-50 text-center">
+        <div class="card-header">
+            {{ player2name }}
+        </div>
+        <div class="card-body">
+                <div class="progress">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: {{pourcentage_pv_j2}}%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="card-text">PV: {{ player2pv }}</p>
+                {% if tour == 2 %}
+                <a href="{{ path('attaquer', {'Player': 'player2'}) }}" class="btn btn-primary" >Attaque Joueur 2</a>
+                {% else %}
+                <button type="button" class="btn btn-primary disabled">Attaque Joueur 2</button>
+                {% endif %}
+                {# <a href="{{ path('attaque_speciale', {'attaque': joueur2.getAtt()}) }}" class="btn btn-danger">Attaque Spéciale</a> #}
+        </div>
+    </div>
+</div>
+
+{% elseif player1pv <= 0 %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card text-center">
+        <div class="card-body">
+            <h1 class="card-title">Joueur 2 a gagné</h1>
+        </div>
+        <div class="card-footer">
+            <a href="{{ path('start_page') }}" class="btn btn-primary">Rejouer</a>
+        </div>
+    </div>
+</div>
+
+
+{% elseif player2pv <= 0 %}
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card text-center">
+        <div class="card-body">
+            <h1 class="card-title">Joueur 1 a gagné</h1>
+        </div>
+        <div class="card-footer">
+            <a href="{{ path('start_page') }}" class="btn btn-primary">Rejouer</a>
+        </div>
+    </div>
+</div>
+
+
+{% endif %}
+{% endblock %}

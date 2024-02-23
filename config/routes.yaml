@@ -1,0 +1,15 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+
+ # config/routes.yaml
+
+attaquer_player1:
+    path: '/attaquer/player1'
+    controller: 'App\Controller\GameController::attaquer'
+    methods: ['GET']
+
+attaquer_player2:
+    path: '/attaquer/player2'
+    controller: 'App\Controller\GameController::attaquer'
+    methods: ['GET']
