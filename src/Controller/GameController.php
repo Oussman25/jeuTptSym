@@ -79,4 +79,37 @@ class GameController extends AbstractController
         
         return $this->redirectToRoute('game_page');
     }    
+
+    #[Route('/attaque_speciale/{Perso}/{Player}/{OtherPlayer}', name: 'attaque_speciale')]
+    public function attaqueSpeciale(Request $request, string $Perso, string $Player, string $OtherPlayer, SessionInterface $session): Response
+    {
+        $player = $session->get($Player);
+        $otherplayer = $session->get($OtherPlayer);
+
+        if ($Perso == 'Guerrier') {
+            $player['def'] = 0.3;
+            $player['att'] = 25;
+        }
+
+        if ($Perso == 'Pretre') {
+            $newPV = $player['pv'] + 30;
+            if ($player['pv'] <= 80) {
+                $player['pv'] = $newPV;
+            } else {
+                $player['pv'] = 80;
+            }
+        }
+
+        if ($Perso == 'Archer') {
+            $ramdom = rand(2, 5);
+            $otherplayer['pv'] -= 12 * $ramdom;
+        }
+
+        if ($Perso == 'Mage') {
+            $otherplayer['pv'] -= 40;
+        }
+    }
+
+    $session->set($Player, $player);
+    $session->set($OtherPlayer, $otherplayer);
 }

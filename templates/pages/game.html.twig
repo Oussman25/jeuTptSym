@@ -4,7 +4,7 @@
 {% if player1pv > 0 and player2pv > 0 %}
 <div class="d-flex vh-100 vw-100">
     <div class="card w-50 text-center">
-        <div class="card-header">
+        <div class="card-header"> <p> Joueur 1 : </p>
             {{ player1name }}
         </div>
         <div class="card-body">
@@ -17,12 +17,13 @@
             {% else %}
             <button type="button" class="btn btn-primary disabled">Attaque Joueur 1</button>
             {% endif %}
+            <a href="{{ path('attaquer', {'Perso': '{{ player2name }}'}, {'Player': 'player2'}, {'OtherPlayer': 'player2'}) }}">Attaque Spéciale 1</a> 
             {# <a href="{{ path('attaque_speciale', {'attaque': joueur1.getAtt()}) }}" class="btn btn-danger">Attaque Spéciale</a> #}
         </div>
     </div>
 
     <div class="card w-50 text-center">
-        <div class="card-header">
+        <div class="card-header"> <p> Joueur 2 : </p>
             {{ player2name }}
         </div>
         <div class="card-body">
@@ -35,6 +36,7 @@
                 {% else %}
                 <button type="button" class="btn btn-primary disabled">Attaque Joueur 2</button>
                 {% endif %}
+                <a href="{{ path('attaquer', {'Perso': '{{ player2name }}'}, {'Player': 'player2'}, {'OtherPlayer': 'player2'}) }}"> Attaque Spéciale 2</a>
                 {# <a href="{{ path('attaque_speciale', {'attaque': joueur2.getAtt()}) }}" class="btn btn-danger">Attaque Spéciale</a> #}
         </div>
     </div>
@@ -66,6 +68,12 @@
     </div>
 </div>
 
-
 {% endif %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+    const button = document.querySelector
+    
+    </script>
 {% endblock %}

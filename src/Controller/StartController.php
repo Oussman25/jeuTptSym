@@ -14,8 +14,6 @@ class StartController extends AbstractController
     {
         $session->invalidate();
         
-        var_dump($session->get('selected_character1_name'));
-        var_dump($session->get('selected_character2_name'));
         return $this->render('pages/start.html.twig');
     }
 }
