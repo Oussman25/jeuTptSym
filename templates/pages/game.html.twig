@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+{% block title %}Game{% endblock %}
 {% block body %}
 {% if player1pv > 0 and player2pv > 0 %}
 <div class="d-flex vh-100 vw-100">
@@ -14,11 +14,11 @@
             <p class="card-text">PV: {{ player1pv }}</p>
             {% if tour == 1 %}
             <a href="{{ path('attaquer', {'Player': 'player1'}) }}" class="btn btn-primary">Attaque Joueur 1</a>
+            <a href="{{ path('attaque_speciale', {'Perso': player1name, 'Player': 'player1', 'OtherPlayer': 'player2'}) }}" class="btn btn-danger">Attaque Spéciale 1</a>
             {% else %}
             <button type="button" class="btn btn-primary disabled">Attaque Joueur 1</button>
+            <button type="button" class="btn btn-danger disabled">Attaque Spéciale 1</button>
             {% endif %}
-            <a href="{{ path('attaquer', {'Perso': '{{ player2name }}'}, {'Player': 'player2'}, {'OtherPlayer': 'player2'}) }}">Attaque Spéciale 1</a> 
-            {# <a href="{{ path('attaque_speciale', {'attaque': joueur1.getAtt()}) }}" class="btn btn-danger">Attaque Spéciale</a> #}
         </div>
     </div>
 
@@ -33,11 +33,11 @@
                 <p class="card-text">PV: {{ player2pv }}</p>
                 {% if tour == 2 %}
                 <a href="{{ path('attaquer', {'Player': 'player2'}) }}" class="btn btn-primary" >Attaque Joueur 2</a>
+                <a href="{{ path('attaque_speciale', {'Perso': player2name, 'Player': 'player2', 'OtherPlayer': 'player1'}) }}" class="btn btn-danger">Attaque Spéciale 2</a>
                 {% else %}
                 <button type="button" class="btn btn-primary disabled">Attaque Joueur 2</button>
+                <button type="button" class="btn btn-danger disabled">Attaque Spéciale 2</button>
                 {% endif %}
-                <a href="{{ path('attaquer', {'Perso': '{{ player2name }}'}, {'Player': 'player2'}, {'OtherPlayer': 'player2'}) }}"> Attaque Spéciale 2</a>
-                {# <a href="{{ path('attaque_speciale', {'attaque': joueur2.getAtt()}) }}" class="btn btn-danger">Attaque Spéciale</a> #}
         </div>
     </div>
 </div>
@@ -70,10 +70,4 @@
 
 {% endif %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <script>
-    const button = document.querySelector
-    
-    </script>
 {% endblock %}

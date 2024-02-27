@@ -93,7 +93,7 @@ class GameController extends AbstractController
 
         if ($Perso == 'Pretre') {
             $newPV = $player['pv'] + 30;
-            if ($player['pv'] <= 80) {
+            if ($newPV <= 80) {
                 $player['pv'] = $newPV;
             } else {
                 $player['pv'] = 80;
@@ -108,8 +108,17 @@ class GameController extends AbstractController
         if ($Perso == 'Mage') {
             $otherplayer['pv'] -= 40;
         }
-    }
+        $session->set($Player, $player);
+        $session->set($OtherPlayer, $otherplayer);
 
-    $session->set($Player, $player);
-    $session->set($OtherPlayer, $otherplayer);
+        if ($Player == 'player1') {
+            $session->set('tour', 2);
+        }
+
+        if ($Player == 'player2') {
+            $session->set('tour', 1);
+        }
+
+        return $this->redirectToRoute('game_page');
+    }
 }
